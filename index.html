@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<video id="bg-video" muted loop playsinline></video>
+<div id="bg-image"></div>
+
+<audio id="music" loop playsinline src="assets/music.mp3"></audio>
+<audio id="voice" playsinline src="assets/voice.mp3"></audio>
+
+<div id="app">
+
+  <!-- SCREEN 1 -->
+  <section class="screen active" id="s1">
+    <p class="big">Before you start… there’s something you should know.</p>
+    <p class="fade">I didn’t forget the days.<br>I was saving them.</p>
+  </section>
+
+  <!-- SCREEN 2 -->
+  <section class="screen dialog" id="s2">
+    <div class="headphone-warning">🎧 Use headphones strictly</div>
+    <div class="qbox">
+      <p class="dialog-text">Where did we first meet?</p>
+      <input id="meet-input">
+      <button onclick="checkMeet()">Submit</button>
+      <p id="meet-msg"></p>
+    </div>
+  </section>
+
+  <!-- SCREEN 3 -->
+  <section class="screen" id="s3">
+    <p>Some moments change everything.</p>
+  </section>
+
+  <!-- SCREEN 4 -->
+  <section class="screen dialog" id="s4">
+    <div class="qbox">
+      <p class="dialog-text">We had a song… which one is it?</p>
+      <input id="song-input">
+      <button onclick="checkSong()">Submit</button>
+      <p id="song-msg"></p>
+    </div>
+  </section>
+
+  <!-- SCREEN 5 -->
+  <section class="screen" id="s5">
+    <p id="final-line"></p>
+  </section>
+
+  <!-- SCREEN 6 -->
+  <section class="screen dialog" id="s6">
+    <div class="qbox" id="flower-q">
+      <p class="dialog-text">
+        can you tell our fav flower that resides within your eyes?
+      </p>
+      <input id="flower-input">
+      <button onclick="checkFlower()">Submit</button>
+      <p id="flower-msg"></p>
+    </div>
+
+    <div id="shayari-1" class="shayari">
+      <p class="shay">🌻 Teri aankhon mein jo bas gaya hai…</p>
+      <p class="shay">🌻 Wahi phool meri duniya ban gaya hai.</p>
+      <button onclick="replayShayari('shayari-1')">Replay</button>
+      <button onclick="go('s7')">Surprise</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 7 -->
+  <section class="screen dialog" id="s7">
+    <p class="dialog-text">
+      Go to the kitchen 🌸<br>
+      There’s a flower waiting for you.
+    </p>
+    <button id="kitchen-next" onclick="go('s8')">Next</button>
+  </section>
+
+  <!-- SCREEN 8 -->
+  <section class="screen dialog" id="s8">
+    <div class="qbox" id="purple-q">
+      <p class="dialog-text">
+        vo sham jis sham ko tujhe pehli bar dekha tha<br>
+        bridge pe wait krte hue
+      </p>
+      <input id="color-input">
+      <button onclick="checkColor()">Submit</button>
+      <p id="color-msg"></p>
+    </div>
+  </section>
+
+  <!-- SCREEN 9 -->
+  <section class="screen dialog" id="s9">
+    <div class="qbox" id="city-q">
+      <p class="dialog-text">
+        vo konsa seher h jise hamne ghar jesa jiya hai?
+      </p>
+      <input id="city-input">
+      <button onclick="checkCity()">Submit</button>
+      <p id="city-msg"></p>
+    </div>
+
+    <div id="shayari-2" class="shayari">
+      <p class="shay">💜 Kuch sheher sirf jagah nahi hote…</p>
+      <p class="shay">💜 Kuch sheher dil ban jaate hain.</p>
+      <button onclick="replayShayari('shayari-2')">Replay</button>
+      <button onclick="go('s10')">Surprise</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 10 -->
+  <section class="screen dialog" id="s10">
+    <p class="dialog-text">
+      Go check the left pocket of your bag 💼
+    </p>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
