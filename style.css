@@ -1,6 +1,6 @@
-/* ============================= */
+/* ========================= */
 /* GLOBAL */
-/* ============================= */
+/* ========================= */
 
 body {
   margin: 0;
@@ -11,9 +11,9 @@ body {
   overflow: hidden;
 }
 
-/* ============================= */
-/* BACKGROUND VIDEO + IMAGE */
-/* ============================= */
+/* ========================= */
+/* BACKGROUND VIDEO */
+/* ========================= */
 
 #bg-video {
   position: fixed;
@@ -39,9 +39,9 @@ body {
   z-index: 0;
 }
 
-/* ============================= */
-/* MAIN APP CENTERING */
-/* ============================= */
+/* ========================= */
+/* CENTERING */
+/* ========================= */
 
 #app {
   position: relative;
@@ -50,16 +50,18 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 20px;              /* prevents edge touching */
+  box-sizing: border-box;
 }
 
-/* ============================= */
-/* SCREEN CONTROL */
-/* ============================= */
+/* ========================= */
+/* SCREEN */
+/* ========================= */
 
 .screen {
   display: none;
   width: 100%;
-  max-width: 360px;
+  max-width: 320px;           /* smaller box */
   text-align: center;
 }
 
@@ -67,76 +69,76 @@ body {
   display: block;
 }
 
-/* ============================= */
-/* GLASS DIALOG BOX */
-/* ============================= */
+/* ========================= */
+/* LIGHT GLASS DIALOG */
+/* ========================= */
 
 .dialog {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.05); /* lighter glass */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  padding: 22px;
-  border-radius: 20px;
+  padding: 18px;
+  border-radius: 18px;
 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
-/* ============================= */
-/* TEXT STYLING */
-/* ============================= */
+/* ========================= */
+/* TEXT */
+/* ========================= */
 
 .big {
-  font-size: 22px;
-  margin-bottom: 12px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .fade {
-  font-size: 15px;
+  font-size: 14px;
   opacity: 0.85;
 }
 
 .dialog-text {
-  font-size: 15px;
-  line-height: 1.5;
-  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
-/* ============================= */
+/* ========================= */
 /* HEADPHONE WARNING */
-/* ============================= */
+/* ========================= */
 
 .headphone-warning {
-  font-size: 13px;
-  margin-bottom: 10px;
-  animation: blink 1.4s infinite;
+  font-size: 12px;
+  margin-bottom: 8px;
+  animation: blink 1.5s infinite;
   color: #ffdede;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
+  0%,100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
 
-/* ============================= */
-/* INPUT FIELD */
-/* ============================= */
+/* ========================= */
+/* INPUT */
+/* ========================= */
 
 input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;   /* iPhone zoom fix */
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  font-size: 16px;     /* iPhone zoom fix */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
 
   outline: none;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 input::placeholder {
@@ -145,67 +147,59 @@ input::placeholder {
 
 input:focus {
   border: 1px solid rgba(255, 192, 203, 0.6);
-  box-shadow: 0 0 8px rgba(255, 192, 203, 0.5);
+  box-shadow: 0 0 6px rgba(255, 192, 203, 0.4);
 }
 
-/* ============================= */
-/* BUTTON STYLE */
-/* ============================= */
+/* ========================= */
+/* BUTTON */
+/* ========================= */
 
 button {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 18px;
 
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 20px;
-
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 8px 18px;
+  font-size: 13px;
   color: white;
 
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 8px;
+  margin: 6px;
 }
 
 button:hover {
-  background: rgba(255, 192, 203, 0.4);
+  background: rgba(255, 192, 203, 0.35);
   transform: scale(1.05);
 }
 
-/* ============================= */
+/* ========================= */
 /* SHAYARI */
-/* ============================= */
+/* ========================= */
 
 .shayari {
   display: none;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .shay {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 16px;
+  margin: 8px 0;
   opacity: 0;
   animation: fadeLine 2s forwards;
-}
-
-.signature {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-top: 10px;
 }
 
 @keyframes fadeLine {
   to { opacity: 1; }
 }
 
-/* ============================= */
-/* HIDDEN QBOX */
-/* ============================= */
+/* ========================= */
+/* HIDDEN QUESTION */
+/* ========================= */
 
 .qbox.hidden {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
