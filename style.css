@@ -1,3 +1,7 @@
+/* ============================= */
+/* GLOBAL */
+/* ============================= */
+
 body {
   margin: 0;
   height: 100vh;
@@ -6,6 +10,10 @@ body {
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
 }
+
+/* ============================= */
+/* BACKGROUND VIDEO + IMAGE */
+/* ============================= */
 
 #bg-video {
   position: fixed;
@@ -22,7 +30,7 @@ body {
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url("assets/mbg.gif");
   background-size: cover;
   background-position: center;
@@ -30,6 +38,10 @@ body {
   transition: opacity 1.5s ease;
   z-index: 0;
 }
+
+/* ============================= */
+/* MAIN APP CENTERING */
+/* ============================= */
 
 #app {
   position: relative;
@@ -40,38 +52,130 @@ body {
   height: 100%;
 }
 
-.screen { display: none; width: 90%; max-width: 420px; text-align: center; }
-.screen.active { display: block; }
+/* ============================= */
+/* SCREEN CONTROL */
+/* ============================= */
+
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ============================= */
+/* GLASS DIALOG BOX */
+/* ============================= */
 
 .dialog {
-  background: rgba(0,0,0,0.7);
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  padding: 22px;
   border-radius: 20px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  transition: all 0.4s ease;
 }
+
+/* ============================= */
+/* TEXT STYLING */
+/* ============================= */
+
+.big {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.fade {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.dialog-text {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* ============================= */
+/* HEADPHONE WARNING */
+/* ============================= */
+
+.headphone-warning {
+  font-size: 13px;
+  margin-bottom: 10px;
+  animation: blink 1.4s infinite;
+  color: #ffdede;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ============================= */
+/* INPUT FIELD */
+/* ============================= */
 
 input {
+  width: 100%;
   padding: 12px;
-  width: 90%;
+  font-size: 16px;   /* iPhone zoom fix */
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+
+  outline: none;
   margin-top: 10px;
-  font-size: 16px;   /* IMPORTANT FIX */
-  border-radius: 12px;
-  border: none;
 }
 
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+input:focus {
+  border: 1px solid rgba(255, 192, 203, 0.6);
+  box-shadow: 0 0 8px rgba(255, 192, 203, 0.5);
+}
+
+/* ============================= */
+/* BUTTON STYLE */
+/* ============================= */
+
 button {
-  background: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 22px;
-  margin: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  margin: 8px;
 }
 
 button:hover {
+  background: rgba(255, 192, 203, 0.4);
   transform: scale(1.05);
-  background: #ffe4ec;
 }
+
+/* ============================= */
+/* SHAYARI */
+/* ============================= */
 
 .shayari {
   display: none;
@@ -83,9 +187,25 @@ button:hover {
   font-size: 18px;
   margin: 10px 0;
   opacity: 0;
-  animation: fade 2s forwards;
+  animation: fadeLine 2s forwards;
 }
 
-@keyframes fade {
+.signature {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+@keyframes fadeLine {
   to { opacity: 1; }
+}
+
+/* ============================= */
+/* HIDDEN QBOX */
+/* ============================= */
+
+.qbox.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
