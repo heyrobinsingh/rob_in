@@ -2,6 +2,10 @@
 /* GLOBAL */
 /* ========================= */
 
+* {
+  box-sizing: border-box;   /* 🔥 overflow fix */
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -12,7 +16,7 @@ body {
 }
 
 /* ========================= */
-/* BACKGROUND VIDEO */
+/* BACKGROUND */
 /* ========================= */
 
 #bg-video {
@@ -30,7 +34,7 @@ body {
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url("assets/mbg.gif");
   background-size: cover;
   background-position: center;
@@ -40,7 +44,7 @@ body {
 }
 
 /* ========================= */
-/* CENTERING */
+/* CENTER APP */
 /* ========================= */
 
 #app {
@@ -50,8 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px;              /* prevents edge touching */
-  box-sizing: border-box;
+  padding: 24px;          /* space from edges */
 }
 
 /* ========================= */
@@ -61,7 +64,7 @@ body {
 .screen {
   display: none;
   width: 100%;
-  max-width: 320px;           /* smaller box */
+  max-width: 300px;
   text-align: center;
 }
 
@@ -70,19 +73,21 @@ body {
 }
 
 /* ========================= */
-/* LIGHT GLASS DIALOG */
+/* ULTRA LIGHT GLASS */
 /* ========================= */
 
 .dialog {
-  background: rgba(255, 255, 255, 0.05); /* lighter glass */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.03);  /* 👈 more transparent */
+  backdrop-filter: blur(6px);             /* 👈 softer blur */
+  -webkit-backdrop-filter: blur(6px);
 
   padding: 18px;
-  border-radius: 18px;
+  border-radius: 16px;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 
   transition: all 0.3s ease;
 }
@@ -124,17 +129,18 @@ body {
 }
 
 /* ========================= */
-/* INPUT */
+/* INPUT (FIXED OVERFLOW) */
 /* ========================= */
 
 input {
-  width: 100%;
+  width: 100%;           /* 🔥 no overflow */
   padding: 10px;
-  font-size: 16px;     /* iPhone zoom fix */
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 16px;       /* iPhone zoom fix */
 
-  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  background: rgba(255, 255, 255, 0.05);
   color: white;
 
   outline: none;
@@ -142,7 +148,7 @@ input {
 }
 
 input::placeholder {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
 }
 
 input:focus {
@@ -155,11 +161,11 @@ input:focus {
 /* ========================= */
 
 button {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.18);
   border-radius: 18px;
 
-  padding: 8px 18px;
+  padding: 8px 16px;
   font-size: 13px;
   color: white;
 
@@ -169,7 +175,7 @@ button {
 }
 
 button:hover {
-  background: rgba(255, 192, 203, 0.35);
+  background: rgba(255, 192, 203, 0.3);
   transform: scale(1.05);
 }
 
@@ -179,12 +185,12 @@ button:hover {
 
 .shayari {
   display: none;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .shay {
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 15px;
   margin: 8px 0;
   opacity: 0;
   animation: fadeLine 2s forwards;
@@ -195,7 +201,7 @@ button:hover {
 }
 
 /* ========================= */
-/* HIDDEN QUESTION */
+/* HIDDEN QBOX */
 /* ========================= */
 
 .qbox.hidden {
