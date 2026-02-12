@@ -3,7 +3,7 @@
 /* ========================= */
 
 * {
-  box-sizing: border-box;   /* 🔥 overflow fix */
+  box-sizing: border-box;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
     url("assets/mbg.gif");
   background-size: cover;
   background-position: center;
@@ -54,7 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 24px;          /* space from edges */
+  padding: 24px;
 }
 
 /* ========================= */
@@ -73,23 +73,21 @@ body {
 }
 
 /* ========================= */
-/* ULTRA LIGHT GLASS */
+/* WATER LIKE GLASS */
 /* ========================= */
 
 .dialog {
   width: 100%;
 
-  background: rgba(255, 255, 255, 0.03);  /* 👈 more transparent */
-  backdrop-filter: blur(6px);             /* 👈 softer blur */
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.04);   /* very transparent */
+  border-radius: 18px;
 
   padding: 18px;
-  border-radius: 16px;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 
-  transition: all 0.3s ease;
+  /* ❌ removed blur completely */
 }
 
 /* ========================= */
@@ -129,18 +127,17 @@ body {
 }
 
 /* ========================= */
-/* INPUT (FIXED OVERFLOW) */
+/* INPUT */
 /* ========================= */
 
 input {
-  width: 100%;           /* 🔥 no overflow */
+  width: 100%;
   padding: 10px;
-  font-size: 16px;       /* iPhone zoom fix */
-
+  font-size: 16px;   /* iPhone zoom fix */
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
   color: white;
 
   outline: none;
@@ -162,7 +159,7 @@ input:focus {
 
 button {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 18px;
 
   padding: 8px 16px;
