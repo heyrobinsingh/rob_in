@@ -3,11 +3,10 @@ body {
   height: 100vh;
   background: black;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow: hidden;
 }
 
-/* VIDEO BACKGROUND */
 #bg-video {
   position: fixed;
   inset: 0;
@@ -15,29 +14,23 @@ body {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 2s ease;
-  z-index: 1;
-}
-
-/* IMAGE BACKGROUND */
-#bg-image {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("assets/bg.jpg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1.5s ease;
   z-index: 0;
 }
 
-#bg-image.lit {
+#bg-image {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("assets/mbg.gif");
+  background-size: cover;
+  background-position: center;
   opacity: 1;
+  transition: opacity 1.5s ease;
+  z-index: 0;
 }
 
-/* APP */
 #app {
   position: relative;
   z-index: 2;
@@ -47,86 +40,49 @@ body {
   height: 100%;
 }
 
-/* SCREENS */
-.screen {
-  display: none;
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-}
+.screen { display: none; width: 90%; max-width: 420px; text-align: center; }
+.screen.active { display: block; }
 
-.screen.active {
-  display: block;
-}
-
-/* DIALOG */
 .dialog {
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.7);
   padding: 30px;
-  border-radius: 18px;
+  border-radius: 20px;
 }
 
-.dialog-text {
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-/* HEADPHONE WARNING */
-.headphone-warning {
-  font-size: 14px;
-  margin-bottom: 10px;
-  animation: blink 1.2s infinite;
-  color: #ffdede;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-/* INPUT & BUTTON */
 input {
-  padding: 12px;
+  padding: 10px;
   width: 90%;
-  font-size: 16px;
   margin-top: 10px;
 }
 
 button {
-  padding: 12px 20px;
-  margin: 10px 6px;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 22px;
+  margin: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* SHAYARI */
+button:hover {
+  transform: scale(1.05);
+  background: #ffe4ec;
+}
+
 .shayari {
   display: none;
-  font-style: italic;
   margin-top: 20px;
 }
 
 .shay {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  margin: 10px 0;
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fade 2s forwards;
 }
 
-.shay:nth-child(2) {
-  animation-delay: 2s;
-}
-
-@keyframes fadeIn {
+@keyframes fade {
   to { opacity: 1; }
-}
-
-/* DELAYED NEXT BUTTON */
-#kitchen-next {
-  display: none;
-}
-
-.qbox {
-  transition: opacity 0.5s ease;
-}
-
-.qbox.hidden {
-  opacity: 0;
-  pointer-events: none;
 }

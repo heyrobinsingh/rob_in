@@ -1,99 +1,140 @@
 setTimeout(() => go("s2"), 7000);
 
 function go(id) {
-  document.querySelectorAll(".screen").forEach(s =>
-    s.classList.remove("active")
-  );
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
+
+  if (!["s6","s9","s12","s15"].includes(id)) {
+    resetBackground();
+  }
 
   if (id === "s7") {
     const btn = document.getElementById("kitchen-next");
     btn.style.display = "none";
-    setTimeout(() => btn.style.display = "inline-block", 10000);
+    setTimeout(() => btn.style.display = "inline-block", 8000);
   }
 }
 
-// MEET
-function checkMeet() {
-  if (meetVal() === "diggin") {
-    hideBox("s2");
-    document.getElementById("bg-image").classList.add("lit");
-    go("s3");
-    setTimeout(() => go("s4"), 3000);
-  } else msg("meet-msg", "Come on…");
-}
+function resetBackground() {
+  const video = document.getElementById("bg-video");
+  const image = document.getElementById("bg-image");
 
-// SONG
-function checkSong() {
-  if (songVal().startsWith("arz")) {
-    hideBox("s4");
-    document.getElementById("music").play();
-    go("s5");
-    setTimeout(() => {
-      document.getElementById("final-line").innerText =
-        "Everything feels different since you came ❤️";
-      setTimeout(() => go("s6"), 3000);
-    }, 3000);
-  } else msg("song-msg", "Almost.");
-}
-
-// FLOWER
-function checkFlower() {
-  if (flowerVal() === "sunflower") {
-    hideBox("flower-q");
-    playVideo("sunflower.mp4");
-    showShayari("shayari-1");
-  } else msg("flower-msg", "Come on…");
-}
-
-// PURPLE (FIXED)
-function checkColor() {
-  if (colorVal() === "purple") {
-    hideBox("purple-q");
-    playVideo("purple.mp4");
-    setTimeout(() => go("s9"), 2000); // ✅ THIS WAS MISSING
-  } else msg("color-msg", "Come on…");
-}
-
-// CITY
-function checkCity() {
-  if (cityVal() === "udaipur") {
-    hideBox("city-q");
-    playVideo("udaipur.mp4");
-    showShayari("shayari-2");
-  } else msg("city-msg", "Come on…");
-}
-
-// HELPERS
-function hideBox(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.add("hidden");
+  video.pause();
+  video.currentTime = 0;
+  video.style.opacity = "0";
+  image.style.opacity = "1";
 }
 
 function playVideo(file) {
-  const v = document.getElementById("bg-video");
-  v.src = "assets/" + file;
-  v.style.opacity = "1";
-  v.play();
+  const video = document.getElementById("bg-video");
+  const image = document.getElementById("bg-image");
+
+  video.pause();
+  video.currentTime = 0;
+  video.src = "assets/" + file;
+
+  image.style.opacity = "0";
+  video.style.opacity = "1";
+
+  video.play();
 }
 
-function showShayari(id) {
-  const s = document.getElementById(id);
-  s.style.display = "none";
-  void s.offsetWidth;
-  s.style.display = "block";
-  document.getElementById("voice").currentTime = 0;
-  document.getElementById("voice").play();
+function normalize(id){return document.getElementById(id).value.toLowerCase().trim();}
+function includes(id,arr){return arr.some(a=>normalize(id).includes(a));}
+function msg(id,t){document.getElementById(id).innerText=t;}
+function hideBox(id){document.getElementById(id).classList.add("hidden");}
+
+function stopVoices(){
+  ["voice1","voice2","voice3","voice4"].forEach(id=>{
+    let a=document.getElementById(id);
+    a.pause();a.currentTime=0;
+  });
 }
 
-function replayShayari(id) {
-  showShayari(id);
+function showShayari(id,voice){
+  stopVoices();
+  document.getElementById(id).style.display="block";
+  document.getElementById(voice).play();
 }
 
-// INPUT HELPERS
-const meetVal = () => document.getElementById("meet-input").value.toLowerCase().trim();
-const songVal = () => document.getElementById("song-input").value.toLowerCase().trim();
-const flowerVal = () => document.getElementById("flower-input").value.toLowerCase().trim();
-const colorVal = () => document.getElementById("color-input").value.toLowerCase().trim();
-const cityVal = () => document.getElementById("city-input").value.toLowerCase().trim();
-const msg = (id, t) => document.getElementById(id).innerText = t;
+function replayShayari(id){
+  const map={"shayari-1":"voice1","shayari-2":"voice2","shayari-3":"voice3","shayari-4":"voice4"};
+  showShayari(id,map[id]);
+}
+
+/* FLOW */
+
+function checkMeet(){
+  if(includes("meet-input",["diggin"])){
+    hideBox("meet-q");
+    go("s3");
+    setTimeout(()=>go("s4"),2500);
+  } else msg("meet-msg","Yaad karo… 🤍");
+}
+
+function checkSong(){
+  if(includes("song-input",["arz"])){
+    hideBox("song-q");
+    document.getElementById("music").play();
+    go("s5");
+    setTimeout(()=>{
+      document.getElementById("final-line").innerText="Tumhare aane se sab badal gaya 💗";
+      setTimeout(()=>go("s6"),3000);
+    },2000);
+  } else msg("song-msg","Thoda aur socho… 🎵");
+}
+
+function checkFlower(){
+  if(includes("flower-input",["sunflower"])){
+    hideBox("flower-q");
+    playVideo("sunflower.mp4");
+    setTimeout(()=>showShayari("shayari-1","voice1"),1500);
+  } else msg("flower-msg","Woh peela phool… 🌻");
+}
+
+function checkColor(){
+  if(includes("color-input",["black"])){
+    hideBox("purple-q");
+    playVideo("purple.mp4");
+    setTimeout(()=>go("s9"),2500);
+  } else msg("color-msg","Yaad karo 🖤");
+}
+
+function checkCity(){
+  if(includes("city-input",["udaipur"])){
+    hideBox("city-q");
+    playVideo("udaipur.mp4");
+    setTimeout(()=>showShayari("shayari-2","voice2"),1500);
+  } else msg("city-msg","Dil wala sheher 💜");
+}
+
+function checkBhas(){
+  if(includes("bhas-input",["bhas tu"])){
+    hideBox("bhas-q");
+    playVideo("bhas.mp4");
+    setTimeout(()=>go("s12"),2500);
+  } else msg("bhas-msg","Yaad hai… 😉");
+}
+
+function checkCake(){
+  if(includes("cake-input",["biscof","biscoff"])){
+    hideBox("cake-q");
+    playVideo("cheesecake.mp4");
+    setTimeout(()=>showShayari("shayari-3","voice3"),1500);
+  } else msg("cake-msg","Meetha yaad karo 🍰");
+}
+
+function checkGlass(){
+  if(includes("glass-input",["glasses"])){
+    hideBox("glass-q");
+    playVideo("glasses.mp4");
+    setTimeout(()=>go("s15"),2500);
+  } else msg("glass-msg","Ek jaisi cheez 👓");
+}
+
+function finalNo(){document.getElementById("no-btn").style.display="none";}
+function finalYes(){
+  hideBox("final-q");
+  playVideo("final.mp4");
+  setTimeout(()=>showShayari("shayari-4","voice4"),1500);
+}
